@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 #if !OLD_MSTEST
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 #else
@@ -178,6 +178,28 @@ namespace FluentAssertions.Specs
             act.ShouldThrow<AssertFailedException>().WithMessage(
                 "Did not expect Guid to be {11111111-aaaa-bbbb-cccc-999999999999} because we want to test the failure message.");
         }
+
+        [TestMethod]
+        public void Should_luis()
+        {
+            //-----------------------------------------------------------------------------------------------------------
+            // Arrange
+            //-----------------------------------------------------------------------------------------------------------
+            List<Guid> guids1 = new List<Guid>
+            {
+                new Guid("11111111-aaaa-bbbb-cccc-999999999999")                 
+            };
+            List<Guid> guids2 = new List<Guid>
+            {
+                new Guid("55555555-ffff-eeee-dddd-444444444444")
+            };
+
+            //-----------------------------------------------------------------------------------------------------------
+            // Act
+            //-----------------------------------------------------------------------------------------------------------
+            guids1.ShouldAllBeEquivalentTo(guids2);
+        }
+
 
         #endregion
 

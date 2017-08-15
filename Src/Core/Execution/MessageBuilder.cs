@@ -63,6 +63,8 @@ namespace FluentAssertions.Execution
         {
             string[] values = failureArgs.Select(a => Formatter.ToString(a, useLineBreaks)).ToArray();
 
+            //luis
+            //string formattedMessage = values.Any() ? String.Format(failureMessage, values.ToArray()) : failureMessage;
             string formattedMessage = string.Format(failureMessage, values);
             return formattedMessage.Replace("{{{{", "{{").Replace("}}}}", "}}");
         }
